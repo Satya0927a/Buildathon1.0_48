@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar"
 
 const Homepage = ()=>{
   return(
-    <div>
+    <div id="homepagebody">
       <Navbar></Navbar>
     </div>
   )
