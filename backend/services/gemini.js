@@ -1,7 +1,7 @@
 const { GoogleGenAI } = require("@google/genai");
 const ai = new GoogleGenAI({})
 
-async function Gemini(prompt, base64) {
+async function Gemini_generate(prompt, base64) {
   const content = [
     {
       inlineData: {
@@ -28,8 +28,23 @@ async function Gemini(prompt, base64) {
   console.log("generation successfull");
   console.log(response.text);
   
-  return response.text.replaceAll("```", "").replace("jsx", "")
+  return response.text.replaceAll("```", "").replace("jsx", "").replace("javascript","")
 
 }
 
-module.exports = Gemini
+async function Gemini_update(prompt) {
+  console.log("regenerating")
+  const response = await ai.models.generateContent({
+    model: "gemini-2.5-flash-lite",
+    contents: `${prompt}`,
+    config:{
+      temperature:1.0,
+      systemInstruction:"Output only code"
+    }
+  });
+  console.log(response.text);
+  return response.text.replaceAll("```", "").replace("jsx", "").replace("javascript","")
+}
+
+
+module.exports = {Gemini_generate,Gemini_update}
