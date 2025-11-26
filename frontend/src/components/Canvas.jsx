@@ -1,15 +1,33 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Tldraw } from 'tldraw'
 import 'tldraw/tldraw.css'
+import { Generate } from '../services/api_services'
 
 const  Canvas = ({setcode})=> {
   const [Detailinput,setdetailinput] = useState(null)
   const [canvasvisible,setcanvasvisible] = useState(true)
+  const Editor_ref = useRef(null)
+
   function togglecanvasvisibliity(){
     setcanvasvisible(!canvasvisible)
   }
-  function handleupload(){
-    
+  function handlemount(editor) {
+    Editor_ref.current = editor
+  }
+
+  async function handleupload() {
+    const editor = Editor_ref.current
+
+    if (!editor) {
+      return
+    }
+
+    const shapeIds = editor.getCurrentPageShapeIds()
+    if (shapeIds.size === 0) return alert('No shapes on the canvas')
+    const { blob } = await editor.toImage([...shapeIds], { format: 'png', background: true })
+    const result = await Generate(Detailinput,blob)
+    // console.log(result.data);
+    setcode(result.data.code)
   }
 	return (
 		<div className="flex justify-center">
@@ -17,7 +35,20 @@ const  Canvas = ({setcode})=> {
       <div className={`${canvasvisible? "flex":"hidden"} flex-col justify-center items-center fixed h-screen w-screen z-10 backdrop-blur-sm bg-black/30`}>
         <div className="h-[90%] w-[70%] top-15 absolute flex flex-col gap-5 items-center ">
           <button className="bg-red-200 cursor-pointer" onClick={togglecanvasvisibliity}>Close</button>
-          <Tldraw className='rounded-2xl'/>
+          <Tldraw className='rounded-2xl'
+            persistenceKey="example"
+            onMount={handlemount}
+            overrides={{
+              tools: (_editor, tools) => {
+                delete tools.hand
+                delete tools.media
+                delete tools.note
+                delete tools.laser
+                delete tools.highlight
+                return tools
+              }
+            }}
+          />
            <div className="flex gap-2 items-center">
             <div className="flex gap-2 items-center">
               <input onChange={(target)=>{setdetailinput(target.value)}} value={Detailinput? Detailinput : ""} className="p-2 h-12 bg-gray-100 border-2 rounded-xl" type="text" placeholder="Describe your design(optional)"/> 
