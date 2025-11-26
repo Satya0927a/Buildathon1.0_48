@@ -7,14 +7,14 @@ export default function Hero() {
             <div className="container hero-inner">
                 <h1 className="text-[58px] font-bold flex justify-center gap-5 cursor-pointer">
                     <div className="flex">
-                        <span className="block transition-all hover:animate-rotate-once">D</span>
-                        <span className="block transition-all hover:animate-rotate-once">r</span>
-                        <span className="block transition-all hover:animate-rotate-once">a</span>
-                        <span className="block transition-all hover:animate-rotate-once">w</span>
+                        <span className="block transition-all hover:rotate-y-90">D</span>
+                        <span className="block transition-all hover:rotate-y-90">r</span>
+                        <span className="block transition-all hover:rotate-y-90">a</span>
+                        <span className="block transition-all hover:rotate-y-90">w</span>
                     </div>
                     <div className="flex">
-                        <span className="block transition-all hover:animate-rotate-once">I</span>
-                        <span className="block transition-all hover:animate-rotate-once">t</span>
+                        <span className="block transition-all hover:rotate-y-90">I</span>
+                        <span className="block transition-all hover:rotate-y-90">t</span>
                     </div>
                     <div className="flex text-violet-600">
                         <span className="block transition-all hover:rotate-y-90">D</span>
