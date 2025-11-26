@@ -9,4 +9,9 @@ async function Generate(detailinput,blob) {
   return result.data
 }
 
-export{Generate}
+async function Update(previous_code,user_prompt) {
+  const result = await axios.post('/api/app/updatecode',{previous_code,user_prompt})
+  return result.data
+}
+
+export{Generate,Update}

@@ -4,10 +4,19 @@ import Editor from "../components/Editor"
 
 
 const Apppage = ()=>{
-  const [code,setcode] = useState(`export default function App(){return(<div className="bg-red-200">Hehe the editor is running finally</div>)}`)
+  const [code,setcode] = useState(`
+    const Greet = ()=>{
+    return(
+      <div className="flex flex-col justify-center items-center h-screen">
+        <h1 className="text-4xl font-bold">Hello User Welcome to Morphix</h1>
+        <p>Start turning your ideas into reality</p>
+      </div>
+    )
+  }
+export default Greet`)
   return(
     <div>
-        <Canvas setcode={setcode}></Canvas>
+        <Canvas code={code} setcode={setcode}></Canvas>
         <Editor code={code}></Editor>
     </div>
   )

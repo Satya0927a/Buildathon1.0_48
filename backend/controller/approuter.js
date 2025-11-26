@@ -10,7 +10,7 @@ approuter.post('/generate',upload.single('file'),async(req,res,next)=>{
     const {detailinput} = req.body
     const base64 = req.file.buffer.toString('base64')
     const prompt = process.env.PROMPT
-    const code = await Gemini(prompt,base64)
+    const code = await Gemini_generate(prompt,base64)
     
     res.status(201).send({status:"success",code:code,message:"the code is successfully generated"})
   }
