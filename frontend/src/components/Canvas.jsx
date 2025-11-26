@@ -27,8 +27,7 @@ const  Canvas = ({setcode})=> {
     if (shapeIds.size === 0) return alert('No shapes on the canvas')
     const { blob } = await editor.toImage([...shapeIds], { format: 'png', background: true })
     const result = await Generate(Detailinput,blob)
-    // console.log(result.data);
-    setcode(result.data.code)
+    setcode(result.code)
   }
 	return (
 		<div className="flex justify-center">
