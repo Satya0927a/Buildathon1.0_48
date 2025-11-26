@@ -1,9 +1,10 @@
+import Canvas from "../components/Canvas"
 
 
 const Apppage = ()=>{
   return(
-    <div className="bg-red-100">
-      this is the app page
+    <div>
+        <Canvas></Canvas>
     </div>
   )
 }
