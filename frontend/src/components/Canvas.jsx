@@ -31,12 +31,12 @@ const  Canvas = ({setcode,code})=> {
   }
 	return (
 		<div className="flex justify-center">
-      <button onClick={togglecanvasvisibliity} className="absolute top-0 z-10 bg-gray-500 w-30 h-10 cursor-pointer"></button>
+      <button onClick={togglecanvasvisibliity} className="absolute top-0 z-10 bg-gradient-to-r from-blue-600 to-indigo-700  w-30 h-10 cursor-pointer text-white shadow-xl  rounded-b-2xl"> Open Canvas</button>
       {!canvasvisible &&  <Regenerate code={code} setcode={setcode}></Regenerate>}
      
-      <div className={`${canvasvisible? "flex":"hidden"} flex-col justify-center items-center fixed h-screen w-screen z-10 backdrop-blur-sm bg-black/30`}>
+      <div className={`${canvasvisible? "flex":"hidden"} flex-col justify-center items-center fixed h-screen w-screen z-10 backdrop-blur-sm bg-black/30 transition-all`}>
         <div className="h-[90%] w-[70%] top-15 absolute flex flex-col gap-5 items-center ">
-          <button className="bg-red-200 cursor-pointer" onClick={togglecanvasvisibliity}>Close</button>
+          <button className="bg-red-200 cursor-pointer p-1 rounded-2xl" onClick={togglecanvasvisibliity}>Close</button>
           <Tldraw className='rounded-2xl'
             persistenceKey="example"
             onMount={handlemount}
@@ -79,7 +79,7 @@ const Regenerate = ({code,setcode})=>{
           <input
             type="text"
             className="flex-1 w-full p-3 sm:p-4 text-gray-800 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-200 placeholder-gray-400 font-medium text-base"
-            placeholder="Enter your prompt here..."
+            placeholder="Make changes to code..."
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             disabled={isGenerating}
