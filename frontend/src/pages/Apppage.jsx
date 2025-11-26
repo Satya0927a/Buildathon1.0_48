@@ -7,7 +7,7 @@ const Apppage = ()=>{
   const [code,setcode] = useState(`export default function App(){return(<div className="bg-red-200">Hehe the editor is running finally</div>)}`)
   return(
     <div>
-        <Canvas></Canvas>
+        <Canvas setcode={setcode}></Canvas>
         <Editor code={code}></Editor>
     </div>
   )
