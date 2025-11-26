@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 
-
+/* 
 html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-}
+} */
 
 #homepagebody {
     height: 100%;
@@ -160,3 +160,122 @@ html, body, #root {
 }
 
 /* ------------------------------------------------------------------------- */
+/* FEATURES */
+
+.hero {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero::before {
+    position: absolute;
+
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65));
+
+}
+
+.wrap {
+    width: 100%;
+    padding: 8px 16px;
+    position: relative;
+    z-index: 2;
+}
+
+.cards {
+    display: flex;
+    gap: 28px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.card {
+    flex: 1;
+    padding: 22px 26px;
+    border-radius: 14px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    /* backdrop-filter: blur(8px) saturate(120%); */
+    color: white;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.6);
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.card p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.card.center {
+    transform: translateY(-6px);
+}
+/* ---------------------- */
+/* CODEPREVIEW */
+full-preview-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.full-preview-img {
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+
+}
+
+.feature-boxes {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.feature-row {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 26px;
+}
+
+.feature-box {
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 12px;
+  padding: 26px;
+  width: 100%;
+  max-width: 380px;
+  color: white;
+  backdrop-filter: blur(10px);
+  min-height: 200px;
+  padding-top: 80px;
+}
+
+.feature-box.large {
+  max-width: 500px;
+  min-height: 240px;
+}
+
+.feature-box h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.feature-box p {
+  font-size: 14px;
+  line-height: 1.4rem;
+  color: rgba(255,255,255,0.8);
+}

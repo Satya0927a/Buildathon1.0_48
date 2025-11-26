@@ -16,7 +16,7 @@ export default function Navbar(){
           <a className=" cursor-pointer opacity-[70%]  hover:opacity-100">About</a>
           <a className=" cursor-pointer opacity-[70%] hover:opacity-100"> Pricing</a>
           <a className=" cursor-pointer opacity-[70%] hover:opacity-100">FAQs</a>
-          <a className=" cursor-pointer opacity-[70%] hover:opacity-100">Blog</a>
+          <a className=" cursor-pointer opacity-[70%] hover:opacity-100">How to Use</a>
         </nav> 
 
         <div className="auth-buttons">
